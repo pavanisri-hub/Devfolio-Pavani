@@ -1,4 +1,4 @@
-import { transition } from "./presets";
+import { easing, transition } from "./presets";
 
 /** Single element fade-up reveal */
 export const fadeUp = {
@@ -43,5 +43,31 @@ export const fadeIn = {
   visible: {
     opacity: 1,
     transition: transition.fast,
+  },
+};
+
+/** Cinematic hero entrance — slower, deeper stagger */
+export const heroCinematicContainer = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.14,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+export const heroCinematicItem = {
+  hidden: {
+    opacity: 0,
+    y: 36,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.85,
+      ease: easing.outExpo,
+    },
   },
 };

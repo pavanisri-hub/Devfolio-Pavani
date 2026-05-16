@@ -140,7 +140,7 @@ export function Navbar() {
               role="dialog"
               aria-modal="true"
               aria-label="Mobile navigation"
-              className="glass-nav fixed inset-x-4 top-[4.5rem] z-50 overflow-hidden rounded-2xl md:hidden"
+              className="glass-nav fixed inset-x-4 top-[4.5rem] z-50 overflow-hidden rounded-2xl border-border-default/90 md:hidden"
               initial={prefersReducedMotion ? false : { opacity: 0, y: -12, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={prefersReducedMotion ? undefined : { opacity: 0, y: -8, scale: 0.98 }}

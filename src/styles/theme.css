@@ -6,7 +6,8 @@
   --font-mono: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
 
   /* ── Backgrounds ──────────────────────────────────────────── */
-  --color-bg-base: #020202;
+  --color-bg-space: #000000;
+  --color-bg-base: #020204;
   --color-bg-surface: #0c0e14;
   --color-bg-elevated: #12151f;
   --color-bg-muted: #181c28;
