@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import { NAV_ITEMS, SITE } from "@/data";
 import { useActiveSection, useScrolled } from "@/hooks";
-import { transition } from "@/lib/motion";
+import { navbarEntrance, transition } from "@/lib/motion";
 import { cn } from "@/lib/utils/cn";
 
 const SECTION_IDS = NAV_ITEMS.map((item) => item.id);
@@ -41,14 +41,18 @@ type NavLinkProps = {
 };
 
 function NavLink({ href, label, isActive, onClick }: NavLinkProps) {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
-    <a
+    <motion.a
       href={href}
       onClick={onClick}
       className={cn(
-        "relative px-3 py-1.5 text-sm font-medium transition-colors duration-200",
-        isActive ? "text-text-primary" : "text-text-muted hover:text-text-secondary",
+        "relative px-3 py-1.5 text-sm font-medium",
+        isActive ? "text-text-primary" : "text-text-muted",
       )}
+      whileHover={prefersReducedMotion ? undefined : { opacity: 0.85 }}
+      transition={transition.fast}
     >
       {label}
       {isActive ? (
@@ -58,7 +62,7 @@ function NavLink({ href, label, isActive, onClick }: NavLinkProps) {
           transition={transition.default}
         />
       ) : null}
-    </a>
+    </motion.a>
   );
 }
 
@@ -78,7 +82,12 @@ export function Navbar() {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
+    <motion.header
+      className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6"
+      initial={prefersReducedMotion ? false : "hidden"}
+      animate="visible"
+      variants={navbarEntrance}
+    >
       <nav
         aria-label="Main navigation"
         className={cn(
@@ -86,16 +95,16 @@ export function Navbar() {
           scrolled && "glass-nav-scrolled",
         )}
       >
-        {/* Brand */}
-        <a
+        <motion.a
           href="#hero"
-          className="font-heading text-lg font-semibold tracking-tight text-text-primary transition-opacity hover:opacity-80"
+          className="font-heading text-lg font-semibold tracking-tight text-text-primary"
           onClick={closeMenu}
+          whileHover={prefersReducedMotion ? undefined : { opacity: 0.85 }}
+          transition={transition.fast}
         >
           {SITE.brand}
-        </a>
+        </motion.a>
 
-        {/* Desktop links */}
         <ul className="hidden items-center gap-1 md:flex">
           {NAV_ITEMS.filter((item) => item.id !== "hero").map((item) => (
             <li key={item.id}>
@@ -108,7 +117,6 @@ export function Navbar() {
           ))}
         </ul>
 
-        {/* Mobile toggle */}
         <button
           type="button"
           className="flex h-10 w-10 items-center justify-center rounded-lg border border-border-subtle text-text-primary transition-colors hover:bg-bg-elevated md:hidden"
@@ -121,7 +129,6 @@ export function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {menuOpen ? (
           <>
@@ -168,6 +175,6 @@ export function Navbar() {
           </>
         ) : null}
       </AnimatePresence>
-    </header>
+    </motion.header>
   );
 }

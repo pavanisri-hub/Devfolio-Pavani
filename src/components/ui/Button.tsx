@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import type { MouseEventHandler, ReactNode } from "react";
 
-import { transition } from "@/lib/motion";
+import { easing, transition } from "@/lib/motion";
 import { cn } from "@/lib/utils/cn";
 
 type ButtonVariant = "primary" | "secondary";
@@ -20,6 +20,18 @@ type ButtonProps = {
 const variantClasses: Record<ButtonVariant, string> = {
   primary: "btn-primary",
   secondary: "btn-secondary",
+};
+
+const hoverPrimary = {
+  y: -3,
+  scale: 1.03,
+  transition: { duration: 0.35, ease: easing.outExpo },
+};
+
+const hoverSecondary = {
+  y: -2,
+  scale: 1.02,
+  transition: { duration: 0.35, ease: easing.outExpo },
 };
 
 export function Button({
@@ -58,9 +70,8 @@ export function Button({
       target={target}
       rel={rel}
       onClick={onClick}
-      whileHover={{ y: -2, scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-      transition={transition.fast}
+      whileHover={variant === "primary" ? hoverPrimary : hoverSecondary}
+      whileTap={{ scale: 0.97, transition: transition.fast }}
     >
       {children}
     </motion.a>

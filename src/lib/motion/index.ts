@@ -3,8 +3,11 @@ export {
   floatReverse,
   floatSlow,
   floatTransition,
+  floatWide,
   glowPulse,
   glowTransition,
+  nebulaBreath,
+  nebulaTransition,
 } from "./animations";
 export { easing, transition } from "./presets";
 export {
@@ -12,6 +15,11 @@ export {
   fadeUp,
   heroCinematicContainer,
   heroCinematicItem,
+  heroCtaReveal,
+  heroEyebrowReveal,
+  heroLineReveal,
+  heroNameReveal,
+  navbarEntrance,
   staggerContainer,
   staggerItem,
 } from "./variants";
