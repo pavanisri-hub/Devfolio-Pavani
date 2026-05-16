@@ -1,9 +1,25 @@
+import {
+  About,
+  Achievements,
+  Contact,
+  Hero,
+  Projects,
+  Skills,
+} from "@/components/sections";
+
 function App() {
   return (
-    <main className="min-h-screen bg-bg-base">
-      {/* Portfolio sections go here */}
-    </main>
+    <div className="min-h-screen bg-bg-base">
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Achievements />
+        <Contact />
+      </main>
+    </div>
   );
 }
 
-export default App
+export default App;
