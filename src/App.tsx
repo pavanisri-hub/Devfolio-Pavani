@@ -1,3 +1,4 @@
+import { Navbar } from "@/components/layout";
 import {
   About,
   Achievements,
@@ -9,7 +10,8 @@ import {
 
 function App() {
   return (
-    <div className="min-h-screen bg-bg-base">
+    <div className="min-h-screen overflow-x-hidden bg-bg-base">
+      <Navbar />
       <main>
         <Hero />
         <About />
