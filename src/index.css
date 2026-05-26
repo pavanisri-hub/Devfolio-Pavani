@@ -61,3 +61,12 @@ h6 {
     transform: translate3d(-200px, -400px, 0);
   }
 }
+
+@keyframes scrollline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(200%);
+  }
+}
