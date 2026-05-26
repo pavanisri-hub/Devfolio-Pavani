@@ -1,3 +1,4 @@
+// src/components/HeroSection.tsx
 import { motion } from 'framer-motion'
 import { fadeUpVariant, staggerContainer } from '../lib/motion'
 
@@ -7,10 +8,11 @@ function HeroSection() {
       id="hero"
       className="relative flex min-h-[90vh] items-center justify-center px-4 pt-24 md:px-6 lg:px-8"
     >
-      {/* Soft nebula glow */}
+      {/* Soft nebula + glow */}
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -left-40 top-10 h-64 w-64 rounded-full bg-sky-500/20 blur-3xl" />
-        <div className="absolute right-[-6rem] top-40 h-72 w-72 rounded-full bg-fuchsia-500/20 blur-3xl" />
+        <div className="absolute -left-40 top-10 h-64 w-64 rounded-full bg-sky-500/25 blur-3xl" />
+        <div className="absolute right-[-6rem] top-40 h-72 w-72 rounded-full bg-fuchsia-500/25 blur-3xl" />
+        <div className="absolute bottom-0 left-1/2 h-40 w-[80%] -translate-x-1/2 rounded-[999px] bg-sky-500/10 blur-3xl" />
       </div>
 
       <motion.div
@@ -19,6 +21,7 @@ function HeroSection() {
         animate="visible"
         className="mx-auto flex w-full max-w-6xl flex-col items-center gap-12 md:flex-row md:items-center md:gap-16"
       >
+        {/* Left content */}
         <div className="flex-1 space-y-6 text-center md:text-left">
           <motion.p
             variants={fadeUpVariant}
@@ -38,8 +41,8 @@ function HeroSection() {
             variants={fadeUpVariant}
             className="max-w-xl text-sm text-slate-300 md:text-base"
           >
-            I design and build intelligent digital experiences by combining AI, full stack development, and
-            modern frontend engineering to solve real-world problems.
+            I design and build intelligent digital experiences by combining AI, full stack development,
+            and modern frontend engineering to solve real-world problems.
           </motion.p>
 
           <motion.div
@@ -54,6 +57,9 @@ function HeroSection() {
             </span>
             <span className="rounded-full border border-slate-500/70 bg-slate-900/70 px-3 py-1 text-slate-200">
               Modern Frontend Engineer
+            </span>
+            <span className="rounded-full border border-emerald-500/50 bg-emerald-500/10 px-3 py-1 text-emerald-200">
+              Creative Problem Solver
             </span>
           </motion.div>
 
@@ -82,30 +88,23 @@ function HeroSection() {
           </motion.div>
         </div>
 
-        {/* Floating futuristic visual element */}
-        {/* Floating futuristic image frame */}
-{/* Floating futuristic image frame */}
-<motion.div
-  variants={fadeUpVariant}
-  className="flex-1"
->
-  <div className="relative mx-auto h-56 w-56 max-w-xs rounded-3xl border border-white/10 bg-gradient-to-br from-sky-500/30 via-slate-950 to-fuchsia-500/30 p-[1px] shadow-[0_0_120px_rgba(56,189,248,0.6)] md:h-72 md:w-72">
-    <div className="relative h-full w-full overflow-hidden rounded-[1.4rem] bg-black/80 backdrop-blur-xl">
-      <img
-        src="/pavani-avatar.jpeg"
-        alt="Portrait of Pamu Pavani Sri"
-        className="h-full w-full object-cover object-center md:object-[50%_20%]"
-      />
-      {/* subtle overlay border */}
-      <div className="pointer-events-none absolute inset-0 rounded-[1.4rem] border border-white/10" />
-      {/* small floating label */}
-      <div className="pointer-events-none absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full border border-sky-500/40 bg-black/80 px-3 py-1 text-[0.65rem] text-sky-100">
-        <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400" />
-        <span>Future AI Product Builder</span>
-      </div>
-    </div>
-  </div>
-</motion.div>
+        {/* Right image frame */}
+        <motion.div variants={fadeUpVariant} className="flex-1">
+          <div className="relative mx-auto h-56 w-56 max-w-xs rounded-3xl border border-white/10 bg-gradient-to-br from-sky-500/30 via-slate-950 to-fuchsia-500/30 p-[1px] shadow-[0_0_120px_rgba(56,189,248,0.6)] md:h-72 md:w-72">
+            <div className="relative h-full w-full overflow-hidden rounded-[1.4rem] bg-black/80 backdrop-blur-xl">
+              <img
+                src="/pavani-avatar.jpeg"
+                alt="Portrait of Pamu Pavani Sri"
+                className="h-full w-full object-cover object-[50%_20%]"
+              />
+              <div className="pointer-events-none absolute inset-0 rounded-[1.4rem] border border-white/10" />
+              <div className="pointer-events-none absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full border border-sky-500/40 bg-black/80 px-3 py-1 text-[0.65rem] text-sky-100">
+                <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                <span>Future AI Product Builder</span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </motion.div>
 
       {/* Scroll indicator */}

@@ -1,24 +1,50 @@
+// src/components/ProjectsSection.tsx
+import { motion } from 'framer-motion'
+import { fadeUpVariant, staggerContainer } from '../lib/motion'
+
 const projects = [
   {
-    title: 'Tenantwise Analytics',
+    title: 'Smart Faculty Availability Tracker',
     description:
-      'Multi-tenant SaaS analytics dashboard with role-based access, async jobs, and rich visualizations.',
-    tech: ['Next.js', 'TypeScript', 'Tailwind', 'PostgreSQL'],
-    github: 'https://github.com/your-username/tenantwise-analytics',
+      'A real-time web application that helps students check faculty availability in staff rooms using ID-card scan based presence tracking.',
+    features: [
+      'Faculty presence tracking',
+      'Department-wise navigation',
+      'Student & faculty login',
+      'Real-time updates',
+      'Search functionality',
+    ],
+    tech: ['HTML', 'CSS', 'JavaScript'],
+    github: 'https://github.com/pavanisri-hub',
+    live: 'https://pavanisri2005.github.io/Faculty-Tracker/',
   },
   {
-    title: 'Real Estate Finder',
+    title: 'QuickCheck – AI Certificate Verification Platform',
     description:
-      'Property search app with interactive maps, filters, and responsive UI optimized for mobile.',
-    tech: ['React', 'TypeScript', 'Map APIs', 'Node.js'],
-    github: 'https://github.com/your-username/real-estate-finder',
+      'An AI-assisted student certificate intelligence platform that helps colleges validate and analyze certificates efficiently.',
+    features: [
+      'AI-based verification',
+      'Suspicious certificate detection',
+      'Mentor review workflow',
+      'Centralized certificate storage',
+    ],
+    tech: ['React', 'AI APIs', 'Tailwind CSS', 'Node.js'],
+    github: 'https://github.com/pavanisri-hub',
+    live: '',
   },
   {
-    title: 'Snippet Studio',
+    title: 'Premium Developer Portfolio',
     description:
-      'Code snippet manager with Monaco editor, tags, GitHub Gist integration, and dark, app-like UI.',
-    tech: ['React', 'Vite', 'Tailwind', 'Zustand'],
-    github: 'https://github.com/your-username/snippet-studio',
+      'A cinematic modern portfolio website built with React, TypeScript, Tailwind CSS, and Framer Motion featuring premium animations and immersive UI.',
+    features: [
+      'Cinematic hero section',
+      'Framer Motion animations',
+      'Dark space-tech aesthetic',
+      'Responsive experience across devices',
+    ],
+    tech: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+    github: 'https://github.com/pavanisri-hub',
+    live: '',
   },
 ]
 
@@ -26,20 +52,28 @@ function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="border-t border-white/5 bg-black/60 px-4 py-16 md:px-6 lg:px-8"
+      className="border-t border-white/5 bg-black/70 px-4 py-16 md:px-6 lg:px-8"
     >
-      <div className="mx-auto max-w-6xl space-y-8">
-        <div className="space-y-3 text-center md:text-left">
+      <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        className="mx-auto max-w-6xl space-y-8"
+      >
+        <motion.div variants={fadeUpVariant} className="space-y-3 text-center md:text-left">
           <h2 className="text-2xl font-semibold md:text-3xl">Projects</h2>
           <p className="text-sm text-slate-300 md:text-base">
-            A few real-world projects that show how I think about architecture, DX, and UX.
+            A selection of projects that combine AI, full stack engineering, and modern frontend experiences.
           </p>
-        </div>
+        </motion.div>
+
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
-            <article
+            <motion.article
               key={project.title}
-              className="flex flex-col justify-between rounded-2xl border border-slate-700/70 bg-slate-900/40 p-5 shadow-[0_0_30px_rgba(15,23,42,0.9)]"
+              variants={fadeUpVariant}
+              className="group flex flex-col justify-between rounded-2xl border border-white/10 bg-black/70 p-5 shadow-[0_0_40px_rgba(15,23,42,0.9)] backdrop-blur transition-transform hover:-translate-y-2 hover:border-sky-400/70"
             >
               <div className="space-y-3">
                 <h3 className="text-lg font-semibold text-slate-50">
@@ -48,31 +82,46 @@ function ProjectsSection() {
                 <p className="text-sm text-slate-300">
                   {project.description}
                 </p>
-                <ul className="flex flex-wrap gap-2">
-                  {project.tech.map((t) => (
-                    <li
-                      key={t}
-                      className="rounded-full border border-slate-600/70 bg-slate-900/70 px-3 py-1 text-xs font-medium text-slate-200"
-                    >
-                      {t}
-                    </li>
+                <ul className="mt-2 space-y-1 text-[0.75rem] text-slate-400">
+                  {project.features.map((f) => (
+                    <li key={f}>• {f}</li>
                   ))}
                 </ul>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {project.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-full border border-slate-600/70 bg-slate-900/70 px-3 py-1 text-[0.7rem] font-medium text-slate-200"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <div className="mt-4">
+              <div className="mt-4 flex flex-wrap gap-3">
                 <a
                   href={project.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-sm font-medium text-sky-400 hover:text-sky-300"
+                  className="flex-1 rounded-full border border-slate-600/70 bg-slate-900/70 px-3 py-1.5 text-center text-xs font-medium text-slate-100 hover:border-sky-400 hover:text-sky-300"
                 >
-                  View on GitHub →
+                  GitHub
                 </a>
+                {project.live && (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex-1 rounded-full bg-sky-500 px-3 py-1.5 text-center text-xs font-medium text-black shadow-[0_0_20px_rgba(56,189,248,0.7)] hover:bg-sky-400"
+                  >
+                    Live Demo
+                  </a>
+                )}
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }
